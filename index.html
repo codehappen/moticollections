@@ -338,7 +338,7 @@
         </div>
 
         <!-- Product Grid -->
-        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
+        <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 pt-2">
           <!-- Dynamically populated by JS -->
         </div>
 
@@ -1351,32 +1351,32 @@
         const isSaved = state.wishlist.includes(product.id);
         const reviewCount = product.reviews ? product.reviews.length : 1;
         return `
-          <article class="bg-white rounded-3xl overflow-hidden border border-pearl-200/90 flex flex-col card-hover group">
-            <div class="relative h-64 bg-pearl-100 overflow-hidden">
+          <article class="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-pearl-200/90 flex flex-col card-hover group">
+            <div class="relative h-40 sm:h-64 bg-pearl-100 overflow-hidden">
               <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-pointer" data-quickview="${product.id}" />
-              <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-xs text-pearl-50 text-[11px] font-medium">
+              <span class="absolute top-2 left-2 sm:top-3.5 sm:left-3.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-obsidian/85 backdrop-blur-xs text-pearl-50 text-[10px] sm:text-[11px] font-medium max-w-[65%] truncate">
                 ${product.badge}
               </span>
-              <button type="button" data-wishlist-toggle="${product.id}" aria-label="Toggle Wishlist" class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full ${isSaved ? 'bg-rose-600 text-white' : 'bg-white/90 text-obsidian hover:bg-white'} flex items-center justify-center shadow transition">
+              <button type="button" data-wishlist-toggle="${product.id}" aria-label="Toggle Wishlist" class="absolute top-2 right-2 sm:top-3.5 sm:right-3.5 w-7 h-7 sm:w-9 sm:h-9 text-sm sm:text-base rounded-full ${isSaved ? 'bg-rose-600 text-white' : 'bg-white/90 text-obsidian hover:bg-white'} flex items-center justify-center shadow transition">
                 ♥
               </button>
-              <button type="button" data-quickview="${product.id}" class="QuickViewBtn absolute bottom-3 left-3 right-3 py-2 rounded-full bg-white/95 backdrop-blur-xs text-obsidian text-xs font-semibold opacity-95 sm:opacity-0 group-hover:opacity-100 transition shadow">
+              <button type="button" data-quickview="${product.id}" class="QuickViewBtn hidden sm:block absolute bottom-3 left-3 right-3 py-2 rounded-full bg-white/95 backdrop-blur-xs text-obsidian text-xs font-semibold opacity-95 sm:opacity-0 group-hover:opacity-100 transition shadow">
                 Quick View &amp; Reviews (${reviewCount})
               </button>
             </div>
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div class="p-3 sm:p-5 flex-1 flex flex-col justify-between space-y-2 sm:space-y-4">
               <div class="space-y-1.5">
                 <div class="flex items-center justify-between text-[11px] text-pearl-600 font-semibold uppercase tracking-wider">
                   <span>${product.category}</span>
                   <span class="text-amber-600">★ ${product.rating.toFixed(1)}</span>
                 </div>
-                <h3 class="font-serif-luxury text-xl font-bold text-obsidian leading-snug cursor-pointer hover:text-pearl-700 transition" data-quickview="${product.id}">
+                <h3 class="font-serif-luxury text-sm sm:text-xl font-bold text-obsidian leading-snug cursor-pointer hover:text-pearl-700 transition" data-quickview="${product.id}">
                   ${product.title}
                 </h3>
-                <p class="text-xs text-obsidian/70 line-clamp-2">${product.description}</p>
+                <p class="hidden sm:block text-xs text-obsidian/70 line-clamp-2">${product.description}</p>
               </div>
-              <div class="pt-3 border-t border-pearl-100 flex items-center justify-between gap-1.5">
-                <span class="font-serif-luxury text-xl font-bold text-obsidian">${formatPrice(product.priceUSD)}</span>
+              <div class="pt-2 sm:pt-3 border-t border-pearl-100 flex flex-wrap items-center justify-between gap-1.5">
+                <span class="font-serif-luxury text-base sm:text-xl font-bold text-obsidian">${formatPrice(product.priceUSD)}</span>
                 <div class="flex items-center gap-1.5">
                   <button type="button" data-wa-product="${product.id}" title="Order on WhatsApp" class="px-2.5 py-2 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-semibold transition">
                     💬 WA
