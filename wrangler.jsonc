@@ -1,0 +1,9 @@
+{
+  "name": "moticollections",
+  "main": "worker.js",
+  "compatibility_date": "2025-11-01",
+  "assets": { "directory": "./", "binding": "ASSETS" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "moticollections-db", "database_id": "8715ec81-6f63-465e-bed8-193c5a502b4b" }
+  ]
+}

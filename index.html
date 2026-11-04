@@ -1177,7 +1177,7 @@
       priceFilter: 'all',
       sortBy: 'featured',
       searchQuery: '',
-      products: loadStorage('moti_products_v1', INITIAL_PRODUCTS),
+      products: INITIAL_PRODUCTS.slice(),
       cart: loadStorage('moti_cart_v1', [
         {
           cartItemId: 'moti-1::18 inch Princess (18K Yellow Gold)',
@@ -2213,7 +2213,7 @@
           reviews: [{ author: 'Verified Buyer', stars: 5, text: 'Beautiful quality from Moticollections!' }]
         };
         state.products.unshift(newProd);
-        const saved = saveStorage('moti_products_v1', state.products);
+        const saved = true; persistProducts().then(ok => { if (!ok) showToast('Server par save nahi hua - password/internet check karein'); });
         renderCatalog();
         newProdPhotoData = null;
         document.getElementById('newProdPhoto').value = '';
@@ -2227,14 +2227,24 @@
         showToast(saved ? `Added "${title}" to Storefront!` : 'Added, lekin storage full hai - refresh par photo save nahi rahegi');
       });
 
-      // ---- Hidden admin: open with #admin + password ----
-      const ADMIN_PASSWORD = 'moti@2026'; // <-- apna password yahan badlein
-      function tryAdminFromHash() {
+      // ---- Hidden admin: open with #admin + password (password is checked on the Cloudflare server) ----
+      let ADMIN_TOKEN = '';
+      async function persistProducts() {
+        try {
+          const r = await fetch('/api/products', { method: 'PUT', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ADMIN_TOKEN }, body: JSON.stringify(state.products) });
+          return r.ok;
+        } catch (e) { return false; }
+      }
+      async function tryAdminFromHash() {
         if (location.hash !== '#admin') return;
         history.replaceState(null, '', location.pathname + location.search);
         const pw = prompt('Admin password:');
-        if (pw === ADMIN_PASSWORD) document.getElementById('openStoreAdminBtn').click();
-        else if (pw !== null) showToast('Galat password');
+        if (!pw) return;
+        try {
+          const r = await fetch('/api/auth', { headers: { 'Authorization': 'Bearer ' + pw } });
+          if (r.ok) { ADMIN_TOKEN = pw; document.getElementById('openStoreAdminBtn').click(); }
+          else showToast('Galat password');
+        } catch (e) { showToast('Server se connect nahi hua'); }
       }
       window.addEventListener('hashchange', tryAdminFromHash);
       tryAdminFromHash();
@@ -2268,17 +2278,16 @@
         if (btn.dataset.act === 'delete') {
           if (!confirm('Delete "' + prod.title + '"?')) return;
           state.products = state.products.filter(x => x.id !== prod.id);
-          saveStorage('moti_products_v1', state.products);
-          renderCatalog(); renderAdminList(); showToast('Product delete ho gaya');
+          persistProducts().then(ok => showToast(ok ? 'Product delete ho gaya' : 'Server par save nahi hua'));
+          renderCatalog(); renderAdminList();
           return;
         }
         const npr = Number(row.querySelector('[data-field="price"]').value);
         if (npr > 0) prod.priceUSD = npr / NPR_RATE;
         const file = row.querySelector('[data-field="photo"]').files[0];
         const finish = () => {
-          const ok = saveStorage('moti_products_v1', state.products);
           renderCatalog(); renderAdminList();
-          showToast(ok ? 'Saved!' : 'Storage full - photo chhoti ya kam karein');
+          persistProducts().then(ok => showToast(ok ? 'Saved! Sabko dikh raha hai' : 'Server par save nahi hua'));
         };
         if (file) resizeImageFile(file, 900, (d) => { if (d) prod.image = d; finish(); });
         else finish();
@@ -2289,6 +2298,16 @@
         a.href = URL.createObjectURL(blob); a.download = 'products.json';
         document.body.appendChild(a); a.click(); a.remove();
       });
+
+      async function loadServerProducts() {
+        try {
+          const r = await fetch('/api/products', { cache: 'no-store' });
+          if (!r.ok) return;
+          const d = await r.json();
+          if (Array.isArray(d) && d.length) { state.products = d; renderCatalog(); renderWishlistDrawer(); }
+        } catch (e) { /* no server: built-in products stay */ }
+      }
+      loadServerProducts();
 
       // Initial render
       renderCatalog();
