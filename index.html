@@ -96,6 +96,11 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-pearl-300 selection:text-obsidian">
 
+  <!-- Sliding banners (new arrivals) -->
+  <div id="promoBanner" class="hidden overflow-hidden bg-obsidian">
+    <div id="promoTrack" class="flex"></div>
+  </div>
+
   <!-- Top Utility & Promo Bar -->
   <div class="bg-obsidian text-pearl-100 text-xs py-2.5 px-4 border-b border-pearl-800/40">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
@@ -156,7 +161,7 @@
           <button type="button" data-nav="collections" class="nav-tab-btn px-3.5 py-2 rounded-full text-sm font-medium text-obsidian/80 hover:text-obsidian hover:bg-pearl-100 transition">
             Curated Edit
           </button>
-          <button type="button" data-nav="bespoke" class="nav-tab-btn px-3.5 py-2 rounded-full text-sm font-medium text-obsidian/80 hover:text-obsidian hover:bg-pearl-100 transition flex items-center gap-1.5">
+          <button type="button" data-nav="bespoke" style="display:none" class="nav-tab-btn px-3.5 py-2 rounded-full text-sm font-medium text-obsidian/80 hover:text-obsidian hover:bg-pearl-100 transition flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-pearl-500"></span>
             Bespoke Studio
           </button>
@@ -208,7 +213,7 @@
         <div class="flex flex-wrap gap-2">
           <button type="button" data-nav="shop" class="mobile-nav-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-obsidian text-pearl-50">Shop All</button>
           <button type="button" data-nav="collections" class="mobile-nav-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-pearl-100 text-obsidian">Curated Edit</button>
-          <button type="button" data-nav="bespoke" class="mobile-nav-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-pearl-100 text-obsidian">Bespoke Studio</button>
+          <button type="button" data-nav="bespoke" style="display:none" class="mobile-nav-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-pearl-100 text-obsidian">Bespoke Studio</button>
           <button type="button" data-nav="story" class="mobile-nav-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-pearl-100 text-obsidian">Our Heritage</button>
           <button type="button" data-nav="orders" class="mobile-nav-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-pearl-100 text-obsidian">My Orders</button>
         </div>
@@ -239,7 +244,7 @@
               <button id="heroShopNowBtn" type="button" class="px-7 py-3.5 rounded-full gold-gradient text-white font-medium text-sm tracking-wide shadow-lg hover:opacity-95 transition">
                 Explore the Collection
               </button>
-              <button id="heroBespokeBtn" type="button" class="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-pearl-300/40 text-pearl-50 font-medium text-sm transition">
+              <button id="heroBespokeBtn" type="button" style="display:none" class="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-pearl-300/40 text-pearl-50 font-medium text-sm transition">
                 Custom Pearl Studio
               </button>
             </div>
@@ -953,6 +958,13 @@
           <div id="adminManageList" class="space-y-3"></div>
           <button id="adminExportBtn" type="button" class="px-5 py-2 rounded-full border text-xs font-semibold hover:opacity-90 transition">⬇ Download products.json (backup)</button>
         </div>
+
+        <div class="space-y-3 pt-2">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-pearl-300">4. Slide Banners (photo, 2 tak)</h3>
+          <p class="text-[11px] opacity-80">Chaudi (wide) photo best rehti hai, jaise 1600 x 500.</p>
+          <div id="adminBannerList" class="space-y-3"></div>
+          <button id="adminBannerSaveBtn" type="button" class="px-5 py-2 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold border border-pink-400/50 hover:opacity-90 transition">Save Banners</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1192,20 +1204,7 @@
       wishlist: loadStorage('moti_wishlist_v1', ['moti-2', 'moti-4']),
       promoCode: null,
       promoPercent: 0,
-      orders: loadStorage('moti_orders_v1', [
-        {
-          orderId: 'MC-79204',
-          date: 'October 28, 2026',
-          customer: 'Guest Collector',
-          city: 'Durbarmarg, Kathmandu',
-          paymentMethod: 'International Card',
-          status: 'In Transit — Insured Courier',
-          totalUSD: 295,
-          items: [
-            { title: 'Sculptural Baroque Pearl 18K Drop Earrings', qty: 1, variant: '18K Yellow Gold Hooks' }
-          ]
-        }
-      ]),
+      orders: loadStorage('moti_orders_v1', []).filter(o => o.orderId !== 'MC-79204'),
       // Modal state
       whatsappNumber: loadStorage('moti_wa_number_v2', '+9779869554243, +9779860087574'),
       activeWhatsappLine: loadStorage('moti_wa_active_v2', '9779869554243'),
@@ -2308,6 +2307,77 @@
         } catch (e) { /* no server: built-in products stay */ }
       }
       loadServerProducts();
+
+      // ---- Top photo banners (slide left), managed from admin ----
+      let bannerImages = [];
+      let promoTimer = null, promoIdx = 0;
+      function renderPromoBanner() {
+        const wrap = document.getElementById('promoBanner');
+        const track = document.getElementById('promoTrack');
+        clearInterval(promoTimer);
+        if (!bannerImages.length) { wrap.classList.add('hidden'); track.innerHTML = ''; return; }
+        wrap.classList.remove('hidden');
+        const items = bannerImages;
+        const shown = items.length > 1 ? items.concat(items[0]) : items;
+        track.innerHTML = shown.map(src => `<img src="${src}" alt="Banner" class="w-full shrink-0 h-36 sm:h-64 object-cover" />`).join('');
+        promoIdx = 0;
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        if (items.length < 2) return;
+        promoTimer = setInterval(() => {
+          promoIdx++;
+          track.style.transition = 'transform .7s ease';
+          track.style.transform = 'translateX(-' + (promoIdx * 100) + '%)';
+          if (promoIdx === items.length) {
+            setTimeout(() => { track.style.transition = 'none'; track.style.transform = 'translateX(0)'; promoIdx = 0; }, 720);
+          }
+        }, 4000);
+      }
+      async function loadBanners() {
+        try {
+          const r = await fetch('/api/banners', { cache: 'no-store' });
+          if (!r.ok) return;
+          const d = await r.json();
+          if (Array.isArray(d)) { bannerImages = d; renderPromoBanner(); }
+        } catch (e) { /* no server: no banners */ }
+      }
+      loadBanners();
+
+      // ---- Admin: banner photos ----
+      let adminBanners = [];
+      function renderAdminBanners() {
+        document.getElementById('adminBannerList').innerHTML = [0, 1].map(i => `
+          <div class="p-3 rounded-xl border space-y-2">
+            <p class="text-xs font-semibold">Banner ${i + 1}</p>
+            ${adminBanners[i] ? `<img src="${adminBanners[i]}" alt="" class="w-full h-24 object-cover rounded-lg" />` : '<p class="text-[11px] opacity-70">Khali hai</p>'}
+            <input type="file" accept="image/*" data-banner-file="${i}" class="w-full text-[11px]" />
+            ${adminBanners[i] ? `<button type="button" data-banner-remove="${i}" class="px-3 py-1 rounded-full border text-[11px] font-semibold">Remove</button>` : ''}
+          </div>`).join('');
+      }
+      document.getElementById('openStoreAdminBtn').addEventListener('click', () => { adminBanners = bannerImages.slice(); renderAdminBanners(); });
+      document.getElementById('adminBannerList').addEventListener('change', (ev) => {
+        const inp = ev.target.closest('[data-banner-file]');
+        if (!inp || !inp.files[0]) return;
+        const i = Number(inp.dataset.bannerFile);
+        resizeImageFile(inp.files[0], 1600, (d) => {
+          if (!d) { showToast('Photo load nahi hui'); return; }
+          adminBanners[i] = d; renderAdminBanners();
+        });
+      });
+      document.getElementById('adminBannerList').addEventListener('click', (ev) => {
+        const rm = ev.target.closest('[data-banner-remove]');
+        if (!rm) return;
+        adminBanners.splice(Number(rm.dataset.bannerRemove), 1);
+        renderAdminBanners();
+      });
+      document.getElementById('adminBannerSaveBtn').addEventListener('click', async () => {
+        const list = adminBanners.filter(Boolean);
+        try {
+          const r = await fetch('/api/banners', { method: 'PUT', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ADMIN_TOKEN }, body: JSON.stringify(list) });
+          if (r.ok) { bannerImages = list; renderPromoBanner(); showToast('Banners save ho gaye - sabko dikh rahe hain'); }
+          else showToast('Server par save nahi hua');
+        } catch (e) { showToast('Server par save nahi hua'); }
+      });
 
       // Initial render
       renderCatalog();
