@@ -115,7 +115,7 @@
             <option value="EUR">EUR (€)</option>
           </select>
         </div>
-        <button id="openStoreAdminBtn" type="button" class="px-2.5 py-0.5 rounded bg-pink-600/40 border border-pink-400/50 text-pearl-100 hover:bg-pink-600/70 text-[11px] font-semibold transition">
+        <button id="openStoreAdminBtn" type="button" class="hidden px-2.5 py-0.5 rounded bg-pink-600/40 border border-pink-400/50 text-pearl-100 hover:bg-pink-600/70 text-[11px] font-semibold transition">
           ⚙ Store Setup &amp; Add Product
         </button>
         <button id="openOrderTrackerTopBtn" type="button" class="text-pearl-200 hover:text-white underline-offset-4 hover:underline transition">
@@ -946,6 +946,13 @@
             + Add Product to Storefront
           </button>
         </form>
+
+        <!-- Manage existing products -->
+        <div class="space-y-3 pt-2">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-pearl-300">3. Edit Photos, Prices &amp; Delete</h3>
+          <div id="adminManageList" class="space-y-3"></div>
+          <button id="adminExportBtn" type="button" class="px-5 py-2 rounded-full border text-xs font-semibold hover:opacity-90 transition">⬇ Download products.json (backup)</button>
+        </div>
       </div>
     </div>
   </div>
@@ -2218,6 +2225,69 @@
         adminModal.classList.add('hidden');
         adminModal.classList.remove('flex');
         showToast(saved ? `Added "${title}" to Storefront!` : 'Added, lekin storage full hai - refresh par photo save nahi rahegi');
+      });
+
+      // ---- Hidden admin: open with #admin + password ----
+      const ADMIN_PASSWORD = 'moti@2026'; // <-- apna password yahan badlein
+      function tryAdminFromHash() {
+        if (location.hash !== '#admin') return;
+        history.replaceState(null, '', location.pathname + location.search);
+        const pw = prompt('Admin password:');
+        if (pw === ADMIN_PASSWORD) document.getElementById('openStoreAdminBtn').click();
+        else if (pw !== null) showToast('Galat password');
+      }
+      window.addEventListener('hashchange', tryAdminFromHash);
+      tryAdminFromHash();
+
+      // ---- Manage products (price / photo / delete) ----
+      const NPR_RATE = CURRENCIES.NPR.rate;
+      function renderAdminList() {
+        const box = document.getElementById('adminManageList');
+        box.innerHTML = state.products.map(p => `
+          <div class="flex flex-wrap items-center gap-3 p-3 rounded-xl border" data-admin-id="${p.id}">
+            <img src="${p.image}" alt="" class="w-14 h-14 rounded-lg object-cover" />
+            <div class="flex-1 min-w-[140px]">
+              <p class="text-xs font-semibold">${p.title}</p>
+              <label class="text-[11px] opacity-80">Price (NPR)</label>
+              <input type="number" min="1" value="${Math.round(p.priceUSD * NPR_RATE)}" data-field="price" class="w-full px-2 py-1 rounded-lg border text-xs" />
+              <input type="file" accept="image/*" data-field="photo" class="w-full mt-1 text-[11px]" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <button type="button" data-act="save" class="px-3 py-1 rounded-full border text-[11px] font-semibold">Save</button>
+              <button type="button" data-act="delete" class="px-3 py-1 rounded-full border text-[11px] font-semibold">Delete</button>
+            </div>
+          </div>`).join('');
+      }
+      document.getElementById('openStoreAdminBtn').addEventListener('click', renderAdminList);
+      document.getElementById('adminManageList').addEventListener('click', (ev) => {
+        const btn = ev.target.closest('button[data-act]');
+        if (!btn) return;
+        const row = btn.closest('[data-admin-id]');
+        const prod = state.products.find(x => x.id === row.dataset.adminId);
+        if (!prod) return;
+        if (btn.dataset.act === 'delete') {
+          if (!confirm('Delete "' + prod.title + '"?')) return;
+          state.products = state.products.filter(x => x.id !== prod.id);
+          saveStorage('moti_products_v1', state.products);
+          renderCatalog(); renderAdminList(); showToast('Product delete ho gaya');
+          return;
+        }
+        const npr = Number(row.querySelector('[data-field="price"]').value);
+        if (npr > 0) prod.priceUSD = npr / NPR_RATE;
+        const file = row.querySelector('[data-field="photo"]').files[0];
+        const finish = () => {
+          const ok = saveStorage('moti_products_v1', state.products);
+          renderCatalog(); renderAdminList();
+          showToast(ok ? 'Saved!' : 'Storage full - photo chhoti ya kam karein');
+        };
+        if (file) resizeImageFile(file, 900, (d) => { if (d) prod.image = d; finish(); });
+        else finish();
+      });
+      document.getElementById('adminExportBtn').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(state.products)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob); a.download = 'products.json';
+        document.body.appendChild(a); a.click(); a.remove();
       });
 
       // Initial render
