@@ -121,6 +121,7 @@
         <button id="openOrderTrackerTopBtn" type="button" class="text-pearl-200 hover:text-white underline-offset-4 hover:underline transition">
           Track Order (<span id="orderCountTopBadge">0</span>)
         </button>
+        <button id="accountTopBtn" type="button" class="text-pearl-100 hover:text-white font-semibold underline-offset-4 hover:underline transition">Login / Register</button>
       </div>
     </div>
   </div>
@@ -178,6 +179,9 @@
           </div>
 
           <!-- Wishlist Button -->
+          <button id="accountHeaderBtn" type="button" aria-label="Login or Register" class="flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-pearl-100 text-obsidian text-sm font-semibold transition">
+            <span>👤</span><span id="accountHeaderLabel" class="hidden sm:inline">Login</span>
+          </button>
           <button id="openWishlistBtn" type="button" aria-label="Open Wishlist" class="relative p-2.5 rounded-full hover:bg-pearl-100 text-obsidian transition">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
@@ -239,8 +243,7 @@
               Where Timeless Pearls Meet Himalayan Craft.
             </h1>
             <p class="text-pearl-200/90 text-sm sm:text-base leading-relaxed max-w-xl">
-              Discover hand-knotted Japanese Akoya &amp; South Sea pearl jewelry, mother-of-pearl evening clutches, and pearl-trimmed Kashmiri &amp; Himalayan silk pashminas crafted for heirloom elegance.
-            </p>
+              Hand-knotted pearl jewelry, evening clutches and pashminas from Nepal.</p>
             <div class="flex flex-wrap items-center gap-3.5 pt-2">
               <button id="heroShopNowBtn" type="button" class="px-7 py-3.5 rounded-full gold-gradient text-white font-medium text-sm tracking-wide shadow-lg hover:opacity-95 transition">
                 Explore the Collection
@@ -362,11 +365,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <div class="rounded-3xl pearl-shimmer border border-pearl-200 p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-7 space-y-4">
-            <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Bridal &amp; Gifting Concierge</span>
-            <h3 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-obsidian">Complimentary Velvet Gift Box &amp; Handwritten Wax-Sealed Note</h3>
+            <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Gifting</span>
+            <h3 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-obsidian">Free Gift Box with Every Order</h3>
             <p class="text-sm sm:text-base text-obsidian/80 leading-relaxed">
-              Every Moticollections order arrives in a keepsake suede-lined presentation chest accompanied by a GIA/Gemological authenticity certificate, pearl care cloth, and optional custom calligraphy card.
-            </p>
+              Every order comes in a gift box with an authenticity certificate.</p>
             <div class="flex flex-wrap gap-3 pt-2">
               <button id="bannerGoBespokeBtn" type="button" class="px-6 py-3 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold uppercase tracking-wider hover:bg-pearl-800 transition">
                 Build a Custom Gift Piece
@@ -397,7 +399,7 @@
       <div class="text-center max-w-2xl mx-auto space-y-3">
         <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Seasonal Lookbook</span>
         <h2 class="font-serif-luxury text-4xl sm:text-5xl font-bold text-obsidian">The Three Pillars of Moticollections</h2>
-        <p class="text-sm sm:text-base text-obsidian/75">Explore our signature capsules curated for weddings, evening galas, and everyday understated luxury.</p>
+        <p class="text-sm sm:text-base text-obsidian/75">Choose a collection.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -410,7 +412,7 @@
           <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <h3 class="font-serif-luxury text-2xl font-bold text-obsidian">Luminous Ocean Classics</h3>
-              <p class="text-sm text-obsidian/75 mt-2">Mirror-luster Japanese Akoya strands and Golden South Sea solitaire rings designed to be passed down through generations.</p>
+              <p class="text-sm text-obsidian/75 mt-2">Akoya strands and South Sea rings.</p>
             </div>
             <button type="button" data-filter-jump="Necklaces" class="collection-jump-btn w-full py-3 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold uppercase tracking-wider hover:bg-pearl-800 transition">
               Shop Ocean Classics →
@@ -427,7 +429,7 @@
           <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <h3 class="font-serif-luxury text-2xl font-bold text-obsidian">Soirée Clutches &amp; Potlis</h3>
-              <p class="text-sm text-obsidian/75 mt-2">Hand-inlaid iridescent mother-of-pearl minaudières and royal emerald zari velvet potli bags with freshwater pearl tassels.</p>
+              <p class="text-sm text-obsidian/75 mt-2">Mother-of-pearl clutches and potli bags.</p>
             </div>
             <button type="button" data-filter-jump="Bags & Clutches" class="collection-jump-btn w-full py-3 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold uppercase tracking-wider hover:bg-pearl-800 transition">
               Shop Evening Bags →
@@ -444,7 +446,7 @@
           <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
             <div>
               <h3 class="font-serif-luxury text-2xl font-bold text-obsidian">Himalayan Silk &amp; Bridal</h3>
-              <p class="text-sm text-obsidian/75 mt-2">Chyangra cashmere-silk wraps edged with hand-sewn seed pearls alongside 18K botanical hair jewelry for luminous brides.</p>
+              <p class="text-sm text-obsidian/75 mt-2">Pearl-edged pashminas and bridal jewelry.</p>
             </div>
             <button type="button" data-filter-jump="Silk & Bridal" class="collection-jump-btn w-full py-3 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold uppercase tracking-wider hover:bg-pearl-800 transition">
               Shop Silk &amp; Bridal →
@@ -462,7 +464,7 @@
           <div>
             <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Moticollections Atelier</span>
             <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-obsidian mt-1">Bespoke Pearl Commission Studio</h2>
-            <p class="text-sm text-obsidian/75 mt-1">Design a custom hand-knotted piece tailored to your exact pearl variety, luster, clasp metal, and personal engraving.</p>
+            <p class="text-sm text-obsidian/75 mt-1">Custom pearl design.</p>
           </div>
 
           <div class="space-y-5">
@@ -551,7 +553,7 @@
           </div>
           <div class="mt-6 p-4 rounded-2xl bg-white/80 border border-pearl-200 text-xs text-obsidian/80 space-y-1">
             <strong class="block text-obsidian">Hand-Knotted in Double Silk</strong>
-            <p>Our master stringers in Kathmandu &amp; Kobe knot between every individual pearl so your heirloom remains secure for decades.</p>
+            <p>Every pearl is hand-knotted for lasting strength.</p>
           </div>
         </div>
       </div>
@@ -562,13 +564,10 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-8 sm:p-12 rounded-3xl border border-pearl-200 shadow-sm">
         <div class="lg:col-span-6 space-y-4">
           <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">The Meaning of Moti</span>
-          <h2 class="font-serif-luxury text-4xl font-bold text-obsidian">Born from the Sanskrit &amp; Nepali Word for Pearl</h2>
+          <h2 class="font-serif-luxury text-4xl font-bold text-obsidian">Moti means Pearl</h2>
+          <p class="text-sm sm:text-base text-obsidian/80 leading-relaxed"><strong>Moticollections</strong> brings fine pearls and Himalayan craft together.</p>
           <p class="text-sm sm:text-base text-obsidian/80 leading-relaxed">
-            Founded with a reverence for organic ocean gems and Himalayan textile artistry, <strong>Moticollections</strong> bridges fine marine pearls with centuries-old South Asian goldsmithing and hand-loomed Chyangra pashmina.
-          </p>
-          <p class="text-sm sm:text-base text-obsidian/80 leading-relaxed">
-            Every pearl is selected in natural north-facing daylight for nacre thickness, surface purity, and warm rose-champagne orient. Fewer than 3% of harvested pearls meet our standard.
-          </p>
+            Only the best pearls make it into our collection.</p>
           <div class="pt-2">
             <button id="storyReturnShopBtn" type="button" class="px-6 py-3 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold uppercase tracking-wider hover:bg-pearl-800 transition">
               Browse the Collection
@@ -585,8 +584,8 @@
     <section id="view-orders" class="hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
       <div class="flex flex-wrap items-center justify-between gap-4 border-b border-pearl-200 pb-5">
         <div>
-          <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Client Concierge</span>
-          <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-obsidian">My Orders &amp; Certificates</h2>
+          <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Track Order</span>
+          <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-obsidian">My Orders</h2>
         </div>
         <button id="ordersBackToShopBtn" type="button" class="px-5 py-2.5 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold hover:bg-pearl-800 transition">
           Continue Shopping
@@ -607,7 +606,7 @@
     <div class="p-5 bg-white border-b border-pearl-200 flex items-center justify-between">
       <div>
         <h2 class="font-serif-luxury text-2xl font-bold text-obsidian">Your Shopping Bag</h2>
-        <p class="text-xs text-obsidian/60"><span id="cartDrawerItemCount">0</span> heirloom item(s)</p>
+        <p class="text-xs text-obsidian/60"><span id="cartDrawerItemCount">0</span> item(s)</p>
       </div>
       <button id="closeCartBtn" type="button" aria-label="Close Shopping Bag" class="p-2 rounded-full hover:bg-pearl-100 text-obsidian transition">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -618,7 +617,7 @@
 
     <!-- Free Shipping Progress Bar -->
     <div class="px-5 py-3 bg-pearl-100/80 border-b border-pearl-200 text-xs">
-      <p id="shippingProgressText" class="font-medium text-obsidian mb-1.5">Add $250.00 more for complimentary insured express shipping</p>
+      <p id="shippingProgressText" class="font-medium text-obsidian mb-1.5">Add $250.00 more for free shipping</p>
       <div class="w-full h-2 rounded-full bg-pearl-200 overflow-hidden">
         <div id="shippingProgressBar" class="h-full gold-gradient transition-all duration-300" style="width: 0%"></div>
       </div>
@@ -791,8 +790,8 @@
       <!-- Checkout Form View -->
       <form id="checkoutForm" class="p-6 sm:p-8 space-y-5 max-h-[80vh] overflow-y-auto">
         <div class="flex items-center justify-between">
-          <h3 class="text-xs font-semibold uppercase tracking-wider text-pearl-700">1. Recipient &amp; Delivery Address</h3>
-          <button id="fillDemoCheckoutBtn" type="button" class="text-xs text-pearl-600 hover:text-obsidian underline font-medium">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-pearl-700">Delivery details</h3>
+          <button id="fillDemoCheckoutBtn" type="button" style="display:none" class="text-xs text-pearl-600 hover:text-obsidian underline font-medium">
             Auto-Fill Demo Details
           </button>
         </div>
@@ -803,8 +802,8 @@
             <input id="chkName" type="text" required placeholder="Aarav Rajbhandari" class="w-full px-3.5 py-2 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
           </div>
           <div>
-            <label for="chkEmail" class="block text-xs font-medium text-obsidian/80 mb-1">Email for GIA Certificate &amp; Receipt *</label>
-            <input id="chkEmail" type="email" required placeholder="aarav@example.com" class="w-full px-3.5 py-2 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
+            <label for="chkEmail" class="block text-xs font-medium text-obsidian/80 mb-1">Email (optional)</label>
+            <input id="chkEmail" type="email" placeholder="aarav@example.com" class="w-full px-3.5 py-2 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
           </div>
           <div>
             <label for="chkPhone" class="block text-xs font-medium text-obsidian/80 mb-1">Phone Number *</label>
@@ -822,20 +821,16 @@
         </div>
 
         <div>
-          <label for="chkGiftNote" class="block text-xs font-medium text-obsidian/80 mb-1">Complimentary Wax-Sealed Gift Message (Optional)</label>
-          <input id="chkGiftNote" type="text" placeholder="Wishing you a lifetime of luminous moments..." class="w-full px-3.5 py-2 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
+          <label for="chkGiftNote" class="block text-xs font-medium text-obsidian/80 mb-1">Gift message (optional)</label>
+          <input id="chkGiftNote" type="text" placeholder="Gift message" class="w-full px-3.5 py-2 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
         </div>
 
         <!-- Payment Method -->
         <div class="pt-2">
           <h3 class="text-xs font-semibold uppercase tracking-wider text-pearl-700 mb-2">2. Payment Method</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <label class="flex items-center gap-2 p-3 rounded-xl border border-pearl-300 bg-pearl-50 cursor-pointer text-xs font-semibold">
-              <input type="radio" name="paymentMethod" value="International Card (Visa / MasterCard / Amex)" checked class="accent-obsidian" />
-              <span>Credit / Debit Card</span>
-            </label>
-            <label class="flex items-center gap-2 p-3 rounded-xl border border-pearl-300 bg-pearl-50 cursor-pointer text-xs font-semibold">
-              <input type="radio" name="paymentMethod" value="eSewa / Khalti / Fonepay Instant QR" class="accent-obsidian" />
+              <input type="radio" name="paymentMethod" value="eSewa / Khalti / Fonepay Instant QR" checked class="accent-obsidian" />
               <span>eSewa / Khalti QR</span>
             </label>
             <label class="flex items-center gap-2 p-3 rounded-xl border border-pearl-300 bg-pearl-50 cursor-pointer text-xs font-semibold">
@@ -848,7 +843,7 @@
         <!-- Order Total Bar -->
         <div class="p-4 rounded-2xl bg-pearl-100 border border-pearl-200 flex items-center justify-between">
           <div>
-            <span class="text-xs text-obsidian/70 block">Total Payable (Insured Delivery)</span>
+            <span class="text-xs text-obsidian/70 block">Total</span>
             <strong id="checkoutModalTotalText" class="font-serif-luxury text-2xl text-obsidian">$0.00</strong>
           </div>
           <button type="submit" class="px-7 py-3.5 rounded-full gold-gradient text-white text-sm font-semibold shadow-md hover:opacity-95 transition">
@@ -862,13 +857,11 @@
         <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-800 mx-auto flex items-center justify-center text-2xl font-bold">
           ✓
         </div>
-        <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Order Confirmed &amp; Insured</span>
-        <h3 class="font-serif-luxury text-3xl font-bold text-obsidian">Thank You for Choosing Moticollections</h3>
+        <span class="text-xs uppercase tracking-[0.2em] text-pearl-600 font-semibold">Order Received</span>
+        <h3 class="font-serif-luxury text-3xl font-bold text-obsidian">Thank you!</h3>
         <p id="confirmedOrderSummaryText" class="text-sm text-obsidian/75 max-w-md mx-auto"></p>
         <div class="p-4 rounded-2xl bg-pearl-50 border border-pearl-200 max-w-md mx-auto text-xs text-left space-y-1">
           <div class="flex justify-between"><span>Order Reference:</span><strong id="confirmedOrderIdText" class="text-obsidian">#MC-1001</strong></div>
-          <div class="flex justify-between"><span>Authenticity Certificate:</span><strong class="text-emerald-700">GIA / Moti Vault Issued</strong></div>
-          <div class="flex justify-between"><span>Estimated Dispatch:</span><strong class="text-obsidian">Within 24 Hours</strong></div>
         </div>
         <div class="flex flex-wrap justify-center gap-3 pt-2">
           <button id="viewOrdersAfterSuccessBtn" type="button" class="px-6 py-3 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold uppercase tracking-wider hover:bg-pearl-800 transition">
@@ -879,6 +872,25 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ==================== LOGIN / REGISTER MODAL ==================== -->
+  <div id="authModalBackdrop" class="fixed inset-0 z-50 bg-obsidian/70 backdrop-blur-xs hidden items-center justify-center p-4">
+    <div class="w-full max-w-sm rounded-3xl bg-white border border-pearl-200 shadow-2xl p-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 id="authTitle" class="font-serif-luxury text-2xl font-bold text-obsidian">Login</h3>
+        <button id="authCloseBtn" type="button" aria-label="Close" class="p-2 rounded-full hover:bg-pearl-100 text-obsidian">✕</button>
+      </div>
+      <p id="authNote" class="hidden text-xs text-obsidian/70"></p>
+      <form id="authForm" class="space-y-3">
+        <input id="authName" type="text" placeholder="Pura naam" class="hidden w-full px-3.5 py-2.5 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
+        <input id="authPhone" type="tel" required placeholder="Phone number" class="w-full px-3.5 py-2.5 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
+        <input id="authPassword" type="password" required minlength="6" placeholder="Password (kam se kam 6 akshar)" class="w-full px-3.5 py-2.5 rounded-xl bg-pearl-50 border border-pearl-200 text-sm focus:outline-none focus:border-obsidian" />
+        <p id="authError" class="hidden text-xs text-rose-700"></p>
+        <button id="authSubmitBtn" type="submit" class="w-full px-5 py-3 rounded-full gold-gradient text-white text-sm font-semibold shadow-md hover:opacity-95 transition">Login</button>
+      </form>
+      <button id="authSwitchBtn" type="button" class="text-xs underline text-pearl-700 hover:text-obsidian">Naya account banayein</button>
     </div>
   </div>
 
@@ -966,6 +978,11 @@
           <div id="adminBannerList" class="space-y-3"></div>
           <button id="adminBannerSaveBtn" type="button" class="px-5 py-2 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold border border-pink-400/50 hover:opacity-90 transition">Save Banners</button>
         </div>
+
+        <div class="space-y-3 pt-2">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-pearl-300">5. Customer Orders</h3>
+          <div id="adminOrdersList" class="space-y-3"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -989,9 +1006,8 @@
           <span class="font-serif-luxury text-2xl font-bold tracking-wider text-pearl-50">MOTICOLLECTIONS</span>
         </div>
         <p class="text-xs text-pearl-300/80 leading-relaxed">
-          Fine Japanese Akoya &amp; South Sea pearls, artisan mother-of-pearl evening bags, and Himalayan cashmere-silk pashminas.
-        </p>
-        <p id="footerAddressText" class="text-[11px] text-pearl-400">Flagship Atelier: Kathmandu, Nepal • WhatsApp: +977 9869554243, +977 9860087574</p>
+          Pearls, evening bags and pashminas from Nepal.</p>
+        <p id="footerAddressText" class="text-[11px] text-pearl-400">Kathmandu, Nepal • WhatsApp: +977 9869554243, +977 9860087574</p>
       </div>
 
       <div>
@@ -1016,7 +1032,7 @@
 
       <div class="space-y-3">
         <h4 class="text-xs font-semibold uppercase tracking-wider text-pearl-50">Join the Moti Privilege Circle</h4>
-        <p class="text-xs text-pearl-300/80">Receive private invitations to new pearl harvests and receive 15% off your first acquisition.</p>
+        <p class="text-xs text-pearl-300/80">Get 15% off your first order.</p>
         <form id="newsletterForm" class="flex gap-2">
           <input id="newsletterEmailInput" type="email" required placeholder="Enter your email..." class="flex-1 px-3.5 py-2 rounded-full bg-pearl-900 border border-pearl-700 text-xs text-pearl-50 focus:outline-none focus:border-pearl-400" />
           <button type="submit" class="px-4 py-2 rounded-full gold-gradient text-white text-xs font-semibold">Join</button>
@@ -1205,7 +1221,8 @@
       wishlist: loadStorage('moti_wishlist_v1', ['moti-2', 'moti-4']),
       promoCode: null,
       promoPercent: 0,
-      orders: loadStorage('moti_orders_v1', []).filter(o => o.orderId !== 'MC-79204'),
+      orders: [],
+      user: null,
       // Modal state
       whatsappNumber: loadStorage('moti_wa_number_v2', '+9779869554243, +9779860087574'),
       activeWhatsappLine: loadStorage('moti_wa_active_v2', '9779869554243'),
@@ -1466,7 +1483,7 @@
         progressText.innerHTML = '✓ You have unlocked <strong>Complimentary Insured Express Shipping!</strong>';
       } else {
         const remaining = threshold - subtotalUSD;
-        progressText.textContent = `Add ${formatPrice(remaining)} more for complimentary insured express shipping`;
+        progressText.textContent = `Add ${formatPrice(remaining)} more for free shipping`;
       }
 
       const container = document.getElementById('cartItemsContainer');
@@ -1619,43 +1636,47 @@
     }
 
     // --- Render Orders View ---
+    const ORDER_STEPS = ['Order Received', 'Confirmed', 'Packed', 'Shipped', 'Delivered'];
     function renderOrders() {
       document.getElementById('orderCountTopBadge').textContent = String(state.orders.length);
       const container = document.getElementById('ordersListContainer');
-      if (state.orders.length === 0) {
+      if (!state.user) {
         container.innerHTML = `
-          <div class="p-12 text-center bg-white rounded-3xl border border-pearl-200">
-            <p class="font-serif-luxury text-2xl font-bold text-obsidian">No Orders Yet</p>
-            <p class="text-sm text-obsidian/70 mt-1">Your completed Moticollections acquisitions and GIA certificates will appear here.</p>
-          </div>
-        `;
+          <div class="p-10 text-center bg-white rounded-3xl border border-pearl-200 space-y-3">
+            <p class="font-serif-luxury text-2xl font-bold text-obsidian">Login karein</p>
+            <p class="text-sm text-obsidian/70">Apne orders dekhne ke liye login ya register karein.</p>
+            <button type="button" data-open-auth class="px-6 py-2.5 rounded-full bg-obsidian text-pearl-50 text-xs font-semibold">Login / Register</button>
+          </div>`;
         return;
       }
-      container.innerHTML = state.orders.map(order => `
-        <div class="bg-white rounded-3xl border border-pearl-200 p-6 shadow-xs space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-pearl-100 pb-3">
-            <div>
-              <span class="text-xs font-bold text-obsidian">Order #${order.orderId}</span>
-              <span class="text-xs text-obsidian/60 ml-2">• Placed on ${order.date}</span>
-            </div>
-            <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
-              ${order.status}
-            </span>
+      if (state.orders.length === 0) {
+        container.innerHTML = `
+          <div class="p-10 text-center bg-white rounded-3xl border border-pearl-200">
+            <p class="font-serif-luxury text-2xl font-bold text-obsidian">Abhi koi order nahi</p>
+          </div>`;
+        return;
+      }
+      container.innerHTML = state.orders.map(order => {
+        const idx = ORDER_STEPS.indexOf(order.status);
+        const cancelled = order.status === 'Cancelled';
+        const date = order.created ? new Date(order.created).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+        const bar = ORDER_STEPS.map((st, i) => `<div class="flex-1 h-1.5 rounded-full ${!cancelled && i <= idx ? 'bg-emerald-600' : 'bg-pearl-200'}"></div>`).join('');
+        return `
+        <div class="bg-white rounded-3xl border border-pearl-200 p-5 sm:p-6 shadow-xs space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="text-xs"><strong class="text-obsidian">Order #${order.orderId}</strong><span class="text-obsidian/60"> • ${date}</span></div>
+            <span class="px-3 py-1 rounded-full ${cancelled ? 'bg-rose-50 border-rose-200 text-rose-800' : 'bg-emerald-50 border-emerald-200 text-emerald-800'} border text-xs font-semibold">${order.status}</span>
           </div>
-          <div class="space-y-2">
-            ${order.items.map(it => `
-              <div class="flex justify-between text-xs text-obsidian/85">
-                <span><strong>${it.qty}×</strong> ${it.title} <span class="text-obsidian/60">(${it.variant})</span></span>
-                <span class="text-pearl-700 font-medium">GIA Certified</span>
-              </div>
-            `).join('')}
+          <div class="flex gap-1.5">${bar}</div>
+          <div class="space-y-1.5">
+            ${order.items.map(it => `<div class="text-xs text-obsidian/85"><strong>${it.qty}×</strong> ${it.title} <span class="text-obsidian/60">(${it.variant})</span></div>`).join('')}
           </div>
           <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-pearl-100 text-xs">
-            <span class="text-obsidian/70">Destination: <strong>${order.city}</strong> (${order.paymentMethod})</span>
-            <span class="font-serif-luxury text-xl font-bold text-obsidian">Total: ${formatPrice(order.totalUSD)}</span>
+            <span class="text-obsidian/70">${order.city} • ${order.paymentMethod}</span>
+            <span class="font-serif-luxury text-lg font-bold text-obsidian">${formatPrice(order.totalUSD)}</span>
           </div>
-        </div>
-      `).join('');
+        </div>`;
+      }).join('');
     }
 
     // --- Drawer Open / Close Helpers ---
@@ -2023,6 +2044,9 @@
       const openCheckoutModal = () => {
         if (state.cart.length === 0) return;
         toggleCartDrawer(false);
+        if (!state.user) { pendingCheckout = true; openAuth('register', 'Order karne ke liye account banayein ya login karein.'); return; }
+        document.getElementById('chkName').value = state.user.name;
+        document.getElementById('chkPhone').value = state.user.phone;
         document.getElementById('checkoutForm').classList.remove('hidden');
         document.getElementById('checkoutSuccessView').classList.add('hidden');
         const modal = document.getElementById('checkoutModalBackdrop');
@@ -2047,43 +2071,43 @@
         document.getElementById('chkGiftNote').value = 'May these pearls bring timeless radiance.';
       });
 
-      document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+      document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
         e.preventDefault();
+        if (!state.user) { openAuth('login'); return; }
         const { totalUSD } = calculateCartTotals();
-        const orderId = 'MC-' + Math.floor(10000 + Math.random() * 90000);
-        const customer = document.getElementById('chkName').value.trim();
-        const city = document.getElementById('chkCity').value.trim();
         const paymentRadio = document.querySelector('input[name="paymentMethod"]:checked');
-        const paymentMethod = paymentRadio ? paymentRadio.value : 'Card';
-
-        const newOrder = {
-          orderId,
-          date: 'November 4, 2026',
-          customer,
-          city,
-          paymentMethod,
-          status: 'Confirmed — Preparing GIA Vault Dispatch',
+        const body = {
+          items: state.cart.map(i => ({ title: i.title, qty: i.qty, variant: i.variant })),
           totalUSD,
-          items: state.cart.map(i => ({ title: i.title, qty: i.qty, variant: i.variant }))
+          city: document.getElementById('chkCity').value.trim(),
+          address: document.getElementById('chkAddress').value.trim(),
+          paymentMethod: paymentRadio ? paymentRadio.value : '',
+          note: document.getElementById('chkGiftNote').value.trim()
         };
-
-        state.orders.unshift(newOrder);
-        saveStorage('moti_orders_v1', state.orders);
-
-        state.cart = [];
-        state.promoCode = null;
-        state.promoPercent = 0;
-        saveStorage('moti_cart_v1', state.cart);
-        updateCartUI();
-        renderOrders();
-
-        document.getElementById('confirmedOrderIdText').textContent = `#${orderId}`;
-        document.getElementById('confirmedOrderSummaryText').textContent =
-          `We are preparing your insured Moticollections parcel for ${customer} in ${city}.`;
-
-        document.getElementById('checkoutForm').classList.add('hidden');
-        document.getElementById('checkoutSuccessView').classList.remove('hidden');
-        showToast(`Order #${orderId} Confirmed!`, 'Certificate & tracking added to My Orders');
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        try {
+          const r = await fetch('/api/orders', { method: 'POST', headers: authHeaders(), body: JSON.stringify(body) });
+          if (r.status === 401) { logout(); closeCheckoutModal(); openAuth('login', 'Dobara login karein.'); return; }
+          if (!r.ok) { showToast('Order save nahi hua, dobara try karein'); return; }
+          const order = await r.json();
+          state.orders.unshift(order);
+          state.cart = [];
+          state.promoCode = null;
+          state.promoPercent = 0;
+          saveStorage('moti_cart_v1', state.cart);
+          updateCartUI();
+          renderOrders();
+          document.getElementById('confirmedOrderIdText').textContent = '#' + order.orderId;
+          document.getElementById('confirmedOrderSummaryText').textContent = 'Hum jald hi aapse sampark karenge.';
+          document.getElementById('checkoutForm').classList.add('hidden');
+          document.getElementById('checkoutSuccessView').classList.remove('hidden');
+          showToast('Order #' + order.orderId + ' mil gaya');
+        } catch (err) {
+          showToast('Internet check karein');
+        } finally {
+          submitBtn.disabled = false;
+        }
       });
 
       document.getElementById('viewOrdersAfterSuccessBtn').addEventListener('click', () => {
@@ -2394,6 +2418,131 @@
           if (r.ok) { bannerImages = list; renderPromoBanner(); showToast('Banners save ho gaye - sabko dikh rahe hain'); }
           else showToast('Server par save nahi hua');
         } catch (e) { showToast('Server par save nahi hua'); }
+      });
+
+      // ---- Customer accounts ----
+      let userToken = loadStorage('moti_token_v1', '');
+      let authMode = 'login';
+      let pendingCheckout = false;
+      const authHeaders = () => ({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + userToken });
+      function updateAccountUI() {
+        document.getElementById('accountTopBtn').textContent = state.user ? ('👤 ' + state.user.name.split(' ')[0] + ' • Logout') : 'Login / Register';
+        document.getElementById('accountHeaderLabel').textContent = state.user ? state.user.name.split(' ')[0] : 'Login';
+        document.getElementById('orderCountTopBadge').textContent = String(state.orders.length);
+      }
+      function setAuthMode(mode) {
+        authMode = mode;
+        const reg = mode === 'register';
+        document.getElementById('authTitle').textContent = reg ? 'Naya Account' : 'Login';
+        document.getElementById('authSubmitBtn').textContent = reg ? 'Account banayein' : 'Login';
+        document.getElementById('authSwitchBtn').textContent = reg ? 'Pehle se account hai? Login karein' : 'Naya account banayein';
+        document.getElementById('authName').classList.toggle('hidden', !reg);
+        document.getElementById('authName').required = reg;
+        document.getElementById('authError').classList.add('hidden');
+      }
+      function openAuth(mode, note) {
+        setAuthMode(mode || 'login');
+        const n = document.getElementById('authNote');
+        n.textContent = note || '';
+        n.classList.toggle('hidden', !note);
+        const m = document.getElementById('authModalBackdrop');
+        m.classList.remove('hidden'); m.classList.add('flex');
+      }
+      function closeAuth() {
+        const m = document.getElementById('authModalBackdrop');
+        m.classList.add('hidden'); m.classList.remove('flex');
+        pendingCheckout = false;
+      }
+      async function loadMyOrders() {
+        try {
+          const r = await fetch('/api/orders', { headers: authHeaders(), cache: 'no-store' });
+          if (r.ok) { state.orders = await r.json(); }
+        } catch (e) { /* offline */ }
+        renderOrders(); updateAccountUI();
+      }
+      function setSession(token, user) {
+        userToken = token; saveStorage('moti_token_v1', token);
+        state.user = user;
+        updateAccountUI();
+        loadMyOrders();
+      }
+      function logout() {
+        userToken = ''; saveStorage('moti_token_v1', '');
+        state.user = null; state.orders = [];
+        updateAccountUI(); renderOrders();
+      }
+      async function restoreSession() {
+        if (!userToken) return;
+        try {
+          const r = await fetch('/api/me', { headers: authHeaders(), cache: 'no-store' });
+          if (r.ok) { state.user = (await r.json()).user; updateAccountUI(); loadMyOrders(); }
+          else if (r.status === 401) logout();
+        } catch (e) { /* offline: stay logged out for now */ }
+      }
+      const onAccountClick = () => {
+        if (state.user) { if (confirm('Logout karein?')) logout(); } else openAuth('login');
+      };
+      document.getElementById('accountTopBtn').addEventListener('click', onAccountClick);
+      document.getElementById('accountHeaderBtn').addEventListener('click', onAccountClick);
+      document.getElementById('authCloseBtn').addEventListener('click', closeAuth);
+      document.getElementById('authModalBackdrop').addEventListener('click', (e) => { if (e.target.id === 'authModalBackdrop') closeAuth(); });
+      document.getElementById('authSwitchBtn').addEventListener('click', () => setAuthMode(authMode === 'login' ? 'register' : 'login'));
+      document.getElementById('ordersListContainer').addEventListener('click', (e) => { if (e.target.closest('[data-open-auth]')) openAuth('login'); });
+      document.getElementById('authForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const err = document.getElementById('authError');
+        err.classList.add('hidden');
+        const body = { phone: document.getElementById('authPhone').value.trim(), password: document.getElementById('authPassword').value };
+        if (authMode === 'register') body.name = document.getElementById('authName').value.trim();
+        const btn = document.getElementById('authSubmitBtn');
+        btn.disabled = true;
+        try {
+          const r = await fetch('/api/' + authMode, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+          const d = await r.json().catch(() => ({}));
+          if (!r.ok) { err.textContent = d.error || 'Kuch galat hua, dobara try karein'; err.classList.remove('hidden'); return; }
+          const goCheckout = pendingCheckout;
+          setSession(d.token, d.user);
+          closeAuth();
+          document.getElementById('authPassword').value = '';
+          showToast('Welcome, ' + d.user.name.split(' ')[0] + '!');
+          if (goCheckout) openCheckoutModal();
+        } catch (e2) {
+          err.textContent = 'Internet check karein'; err.classList.remove('hidden');
+        } finally { btn.disabled = false; }
+      });
+      restoreSession();
+      updateAccountUI();
+
+      // ---- Admin: customer orders ----
+      const ORDER_STATUSES = ORDER_STEPS.concat('Cancelled');
+      async function renderAdminOrders() {
+        const box = document.getElementById('adminOrdersList');
+        box.innerHTML = '<p class="text-[11px] opacity-70">Loading...</p>';
+        try {
+          const r = await fetch('/api/admin/orders', { headers: { 'Authorization': 'Bearer ' + ADMIN_TOKEN } });
+          if (!r.ok) throw new Error('x');
+          const list = await r.json();
+          box.innerHTML = list.length ? list.map(o => `
+            <div class="p-3 rounded-xl border space-y-1" data-order-id="${o.orderId}">
+              <p class="text-xs font-semibold">#${o.orderId} • ${o.customer} • ${o.phone}</p>
+              <p class="text-[11px] opacity-80">${o.items.map(i => i.qty + '× ' + i.title).join(', ')}</p>
+              <p class="text-[11px] opacity-80">${o.city}, ${o.address} • ${o.paymentMethod} • ${formatPrice(o.totalUSD)}</p>
+              <div class="flex items-center gap-2">
+                <select class="px-2 py-1 rounded-lg border text-xs">${ORDER_STATUSES.map(st => `<option ${st === o.status ? 'selected' : ''}>${st}</option>`).join('')}</select>
+                <button type="button" data-order-save class="px-3 py-1 rounded-full border text-[11px] font-semibold">Update</button>
+              </div>
+            </div>`).join('') : '<p class="text-[11px] opacity-70">Abhi koi order nahi.</p>';
+        } catch (e) { box.innerHTML = '<p class="text-[11px]">Orders load nahi hue.</p>'; }
+      }
+      document.getElementById('openStoreAdminBtn').addEventListener('click', renderAdminOrders);
+      document.getElementById('adminOrdersList').addEventListener('click', async (ev) => {
+        const btn = ev.target.closest('[data-order-save]');
+        if (!btn) return;
+        const row = btn.closest('[data-order-id]');
+        try {
+          const r = await fetch('/api/admin/orders', { method: 'PUT', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ADMIN_TOKEN }, body: JSON.stringify({ orderId: row.dataset.orderId, status: row.querySelector('select').value }) });
+          showToast(r.ok ? 'Status update ho gaya' : 'Update nahi hua');
+        } catch (e) { showToast('Update nahi hua'); }
       });
 
       // Initial render
